@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic" as="style" crossorigin="anonymous">
+  <meta name="Description" content="API Console is an application to generate documentation for an API specification automatically. Works with RAML and OAS.">
+  <base href="/">
+  <title>API Console</title>
+  <meta name="theme-color" content="#00A2DF">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="API Console">
+  <!-- OG data -->
+  <meta property="og:title" content="API Console" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="An application to generate API documentation from RAML or OAS spec." />
+  <meta property="og:locale" content="en_US" />
+  <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: #3e4348;
+      height: 100%;
+    }
+
+    html {
+      background-color: #fff;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      margin-left: auto;
+      margin-right: auto;
+      /* max-width: 1680px; */
+      overflow-x: hidden;
+      min-width: 320px;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-size: 16px;
+      line-height: 28px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+
+    *:first-child {
+      margin-top: 0;
+    }
+  </style>
+
+</head>
+<body>
+  <api-console-io></api-console-io>
+
+  <script type="module" src="./components/api-console-io/api-console-io.js"></script>
+</body>
+
+</html>

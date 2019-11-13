@@ -1,0 +1,30 @@
+html {
+  --text-color: #333;
+  --primary-color: #01579B;
+  --accent-color: #4CAF50;
+  --error-color: #C62828;
+  --secondary-text-color: #616161;
+  --anypoint-button-font-size: 1rem;
+}
+
+body {
+  color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --primary-color: #FFCC80;
+    --text-color: #fff;
+    --secondary-text-color: #F5F5F5;
+    --primary-background-color: #424242;
+  }
+
+  body {
+    background-color: #424242;
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+
+}

@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: apiconsole-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: apiconsole-global
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    certmanager.k8s.io/acme-http01-edit-in-place: "true"
+  labels:
+    app: apiconsole
+spec:
+  rules:
+  - host: api-console.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-console-frontend
+          servicePort: 8080
+  - host: demo.api-console.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-console-frontend
+          servicePort: 8080
+  # https://github.com/ahmetb/gke-letsencrypt/blob/master/50-get-a-certificate.md
+  tls:
+  - secretName: api-console-io-tls
+    hosts:
+    - api-console.io
+  - secretName: demo-api-console-io-tls
+    hosts:
+    - demo.api-console.io
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-console-www
+  labels:
+    app: api-console-frontend
+spec:
+  type: NodePort
+  selector:
+    app: api-console-frontend
+    tier: frontend
+  ports:
+  - port: 8080
+    targetPort: 8080

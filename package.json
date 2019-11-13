@@ -1,0 +1,102 @@
+{
+  "name": "api-console-io",
+  "version": "0.0.1",
+  "description": "API Console official web site",
+  "author": "api-console-io",
+  "license": "CC BY 2.0",
+  "main": "app.js",
+  "dependencies": {
+    "@google-cloud/debug-agent": "^4.0.4",
+    "@google-cloud/logging-winston": "^2.1.0",
+    "@google-cloud/trace-agent": "^4.2.2",
+    "compression": "^1.7.4",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.1",
+    "nconf": "^0.10.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@advanced-rest-client/oauth-authorization": "^3.0.1",
+    "@advanced-rest-client/xhr-simple-request": "^3.0.1",
+    "@anypoint-web-components/anypoint-button": "^1.0.12",
+    "@anypoint-web-components/anypoint-styles": "^1.0.1",
+    "@anypoint-web-components/api-console": "^6.0.0-preview.22",
+    "@open-wc/building-rollup": "^0.9.0",
+    "@open-wc/eslint-config": "^1.0.0",
+    "@open-wc/prettier-config": "^0.1.10",
+    "@open-wc/testing": "^2.0.0",
+    "@open-wc/testing-karma": "^3.0.0",
+    "@open-wc/testing-karma-bs": "^1.0.0",
+    "es-dev-server": "^1.5.0",
+    "eslint": "^6.1.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.5.0",
+    "husky": "^1.0.0",
+    "lint-staged": "^8.0.0",
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.15.4",
+    "rollup-plugin-cpy": "^2.0.1",
+    "rollup-plugin-multi-entry": "^2.1.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "webpack-merge": "^4.1.5"
+  },
+  "scripts": {
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "test": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "test:update-snapshots": "karma start --update-snapshots",
+    "test:prune-snapshots": "karma start --prune-snapshots",
+    "test:compatibility": "karma start --compatibility all --coverage",
+    "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
+    "test:bs": "karma start karma.bs.config.js --compatibility all --coverage",
+    "start:build": "cd dist && es-dev-server --open",
+    "build:app": "rimraf dist && rollup -c rollup.config.js",
+    "build:demo": "rimraf dist && rollup -c demo/rollup.config.js",
+    "start": "node ${SCRIPT:-app.js}",
+    "start:dev": "es-dev-server --app-index index.html --node-resolve --open --watch",
+    "start:compatibility": "es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/api-console-io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/advanced-rest-client/api-console-io/issues",
+    "email": "arc@mulesoft.com"
+  },
+  "authors": [
+    "Pawel Psztyc",
+    "The Advanced REST client authors <arc@mulesoft.com>"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": "off"
+    }
+  },
+  "prettier": "@open-wc/prettier-config",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
