@@ -37,7 +37,7 @@ spec:
           secretName: apiconsole-key
       containers:
       - name: apiconsole
-        image: gcr.io/api-console/api-console-io:latest
+        image: gcr.io/api-console-a6952/api-console-io:0.0.1
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
@@ -53,4 +53,4 @@ spec:
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: /var/secrets/google/key.json
           - name: PROJECT_ID
-            value: api-console
+            value: api-console-a6952
