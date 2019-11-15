@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: apiconsole-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: apiconsole-global
+    networking.gke.io/managed-certificates: main-certificate,demo-certificate
+spec:
+  rules:
+  - host: api-console.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-console-www-service
+          servicePort: www-port
+  - host: demo.api-console.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-console-www-service
+          servicePort: demo-port

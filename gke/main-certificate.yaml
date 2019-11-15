@@ -4,4 +4,4 @@ metadata:
   name: main-certificate
 spec:
   domains:
-    - api-console.com
+    - api-console.io

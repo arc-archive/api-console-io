@@ -46,14 +46,14 @@ app.get('/_ah/health', (req, res) => {
   res.status(200).send('ok');
 });
 
-const serveMain = serveStatic('www-dist');
-const mainDev = (req, res) => {
+const serveDemo = serveStatic('demo-dist');
+const demoDev = (req, res) => {
   return () => {
-    const index = path.join('www-dist', 'index.html');
+    const index = path.join('demo-dist', 'index.html');
     fs.readFile(index, 'utf8', (err, data) => {
       if (err) {
         res.status(500).send({
-          error: 'Unable to read index file',
+          error: 'Unable to read demo app index file',
         });
       } else {
         res.set('Content-Type', 'text/html');
@@ -64,7 +64,7 @@ const mainDev = (req, res) => {
 };
 
 app.get('*', (req, res) => {
-  serveMain(req, res, mainDev(req, res));
+  serveDemo(req, res, demoDev(req, res));
 });
 
 const server = app.listen(config.get('PORT'), () => {

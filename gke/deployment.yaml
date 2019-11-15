@@ -19,12 +19,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apiconsole-frontend
+  labels:
+    app: apiconsole-www
 spec:
   selector:
     matchLabels:
       app: apiconsole
       tier: frontend
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -37,24 +39,28 @@ spec:
           secretName: api-console-sa-key
       containers:
       - name: apiconsole-www
-        image: gcr.io/api-console-a6952/api-console-io:0.0.2
+        image: gcr.io/api-console-a6952/api-console-io:0.0.3
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
         env:
-        - name: "PORT"
+        - name: SCRIPT
+          value: app.js
+        - name: PORT
           value: "50001"
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/key.json
         - name: PROJECT_ID
           value: api-console-a6952
-      - name: apiconsole-demo
-        image: gcr.io/api-console-a6952/api-console-io:0.0.2
+      - name: apiconsole-demo-pages
+        image: gcr.io/api-console-a6952/api-console-io:0.0.3
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
         env:
-        - name: "PORT"
+        - name: SCRIPT
+          value: demos.js
+        - name: PORT
           value: "50002"
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/key.json

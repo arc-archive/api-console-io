@@ -4,4 +4,4 @@ metadata:
   name: demo-certificate
 spec:
   domains:
-    - demo.api-console.com
+    - demo.api-console.io

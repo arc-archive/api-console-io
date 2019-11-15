@@ -1,6 +1,6 @@
 {
   "name": "api-console-io",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "API Console official web site",
   "author": "api-console-io",
   "license": "CC BY 2.0",
@@ -65,8 +65,7 @@
     "start:dev": "es-dev-server --app-index index.html --node-resolve --open --watch",
     "start:compatibility": "es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch",
     "gke:build": "docker build -t gcr.io/api-console-a6952/api-console-io:$npm_package_version .",
-    "gke:deploy": "docker -- push gcr.io/api-console-a6952/api-console-io:$npm_package_version",
-    "gke:deploy-config": "kubectl apply -f deployment.yaml"
+    "gke:deploy": "docker -- push gcr.io/api-console-a6952/api-console-io:$npm_package_version"
   },
   "repository": {
     "type": "git",
