@@ -16,22 +16,21 @@
  * See LICENSE.md for license content.
  */
 
-
-import * as traceAgent from '@google-cloud/trace-agent';
-import * as debugAgent from '@google-cloud/debug-agent';
+// import * as traceAgent from '@google-cloud/trace-agent';
+// import * as debugAgent from '@google-cloud/debug-agent';
 import path from 'path';
 import express from 'express';
 import serveStatic from 'serve-static';
 import fs from 'fs';
 import compression from 'compression';
 import config from './config.js';
-import { requestLogger } from './lib/logging.js';
+// import { requestLogger } from './lib/logging.js';
 
 const IS_PRODUCTION = config.get('NODE_ENV') === 'production';
 
 if (IS_PRODUCTION) {
-  traceAgent.start();
-  debugAgent.start();
+  // traceAgent.start();
+  // debugAgent.start();
 }
 
 const app = express();
@@ -40,9 +39,8 @@ export default app;
 app.disable('etag');
 app.disable('x-powered-by');
 app.set('trust proxy', true);
-app.use(requestLogger);
+// app.use(requestLogger);
 app.use(compression());
-
 
 app.get('/_ah/health', (req, res) => {
   res.status(200).send('ok');
@@ -64,7 +62,7 @@ const demoDev = (req, res) => {
         res.send(data);
       }
     });
-  }
+  };
 };
 const mainDev = (req, res) => {
   return () => {
@@ -79,7 +77,7 @@ const mainDev = (req, res) => {
         res.send(data);
       }
     });
-  }
+  };
 };
 
 app.get('*', (req, res) => {

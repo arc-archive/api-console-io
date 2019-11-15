@@ -15,16 +15,16 @@
 # This file configures the API components autotest CI application frontend.
 # The frontend serves public web traffic.
 
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: apiconsole-frontend
+  labels:
+    app: apiconsole
+# For more info about Pods see:
+#   https://cloud.google.com/container-engine/docs/pods/
 spec:
-  selector:
-    matchLabels:
-      app: apiconsole
-      tier: frontend
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -34,29 +34,23 @@ spec:
       volumes:
       - name: google-cloud-key
         secret:
-          secretName: api-console-sa-key
+          secretName: apiconsole-key
       containers:
-      - name: apiconsole-www
+      - name: apiconsole
         image: gcr.io/api-console-a6952/api-console-io:0.0.2
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
+        # This setting makes nodes pull the docker image every time before
+        # starting the pod. This is useful when debugging, but should be turned
+        # off in production.
+        imagePullPolicy: Always
+        # The app process listens on port 8080 for web traffic by default.
+        ports:
+        - name: http-server
+          containerPort: 8080
         env:
-        - name: "PORT"
-          value: "50001"
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/key.json
-        - name: PROJECT_ID
-          value: api-console-a6952
-      - name: apiconsole-demo
-        image: gcr.io/api-console-a6952/api-console-io:0.0.2
-        volumeMounts:
-        - name: google-cloud-key
-          mountPath: /var/secrets/google
-        env:
-        - name: "PORT"
-          value: "50002"
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/key.json
-        - name: PROJECT_ID
-          value: api-console-a6952
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /var/secrets/google/key.json
+          - name: PROJECT_ID
+            value: api-console-a6952
