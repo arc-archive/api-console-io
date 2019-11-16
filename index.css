@@ -1,4 +1,6 @@
 html {
+  font-size: 16px;
+  line-height: 32px;
   --text-color: #333;
   --primary-color: #01579B;
   --accent-color: #4CAF50;
@@ -9,6 +11,23 @@ html {
 
 body {
   color: var(--text-color);
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 1680px; */
+  overflow-x: hidden;
+  min-width: 320px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 22px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
