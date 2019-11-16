@@ -18,6 +18,7 @@ site_description: API Console documentation for developers
 site_author: Pawel Psztyc
 copyright: © 2019 MuleSoft, a Salesforce company
 markdown_extensions:
+  - pymdownx.mark
   - admonition
   - codehilite:
       guess_lang: false
@@ -30,6 +31,7 @@ site_dir: docs-dist
 nav:
 - Introduction: 'index.md'
 - Usage: 'usage.md'
+- Configuration: 'configuring-api-console.md'
 - 'Basic concepts':
     - 'About web components': 'basics/web-components.md'
     - 'Embedding API Console': 'basics/embedding-api-console.md'
