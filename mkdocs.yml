@@ -1,0 +1,39 @@
+site_name: API Console Documentation
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue'
+    accent: 'green'
+extra:
+  search:
+    language: 'en, de, ru'
+  social:
+  - type: 'github'
+    link: 'https://github.com/mulesoft/api-console'
+repo_name: 'mulesoft/api-console'
+repo_url: 'https://github.com/mulesoft/api-console'
+edit_uri: null
+site_url: https://docs.api-console.io
+site_description: API Console documentation for developers
+site_author: Pawel Psztyc
+copyright: © 2019 MuleSoft, a Salesforce company
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+site_dir: docs-dist
+
+nav:
+- Introduction: 'index.md'
+- Usage: 'usage.md'
+- 'Basic concepts':
+    - 'About web components': 'basics/web-components.md'
+    - 'Embedding API Console': 'basics/embedding-api-console.md'
+- 'Advanced topics':
+    - 'Parsing API project': 'advanced/parsing-amf.md'
+    - 'Working with AMF model': 'advanced/working-with-amf.md'
+    - 'Handling DOM events': 'advanced/handling-events-in-component.md'

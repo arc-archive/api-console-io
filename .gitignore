@@ -20,6 +20,7 @@
 /dist/
 /www-dist/
 /demo-dist/
+/docs-dist/
 config.json
 key.json
 certs/

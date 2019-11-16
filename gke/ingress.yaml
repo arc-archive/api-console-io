@@ -4,7 +4,7 @@ metadata:
   name: apiconsole-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: apiconsole-global
-    networking.gke.io/managed-certificates: main-certificate,demo-certificate
+    networking.gke.io/managed-certificates: main-certificate,demo-certificate,docs-certificate
 spec:
   rules:
   - host: api-console.io
@@ -19,3 +19,9 @@ spec:
       - backend:
           serviceName: api-console-www-service
           servicePort: demo-port
+  - host: docs.api-console.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-console-www-service
+          servicePort: docs-port

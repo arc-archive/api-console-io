@@ -16,3 +16,7 @@ spec:
     protocol: TCP
     port: 60002
     targetPort: 50002
+  - name: docs-port
+    protocol: TCP
+    port: 60003
+    targetPort: 50003
