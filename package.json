@@ -59,6 +59,7 @@
     "test:compatibility:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
     "test:bs": "karma start karma.bs.config.js --compatibility all --coverage",
     "start:build": "cd dist && es-dev-server --open",
+    "start:docs": "mkdocs serve",
     "build:app": "rimraf dist && rollup -c rollup.config.js",
     "build:demo": "rimraf dist && rollup -c demo/rollup.config.js",
     "build:docs": "mkdocs build",

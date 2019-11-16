@@ -12,7 +12,7 @@ The web components is a combination of 4 specifications that browser vendors and
 
 ### Custom Elements
 
-The specification allows to define new HTML elements. The HTML standard is limited to a set number of defined elements but new specification allows us to extend it to new elements with its own behaviors.
+The specification allows to define new HTML elements. The HTML standard is limited to a set number of defined elements but new specification allows us to extend it to new elements with its own behaviours.
 
 See the specification here: [Custom elements](https://w3c.github.io/webcomponents/spec/custom/)
 
@@ -40,9 +40,9 @@ Because your web component is not a part of the HTML tags spec it is undefined f
 
 **Custom elements can be used before their definition is registered.**
 
-When the element is already registered and it is instantiated and inserted into the DOM few functions are called as a lifecycle methods.
+When the element is already registered and it is instantiated and inserted into the DOM few functions are called as a life cycle methods.
 
-**Constructor** is called when an instance of the element is created or upgraded. It is useful for initializing state, settings up event listeners, or creating shadow dom.
+**Constructor** is called when an instance of the element is created or upgraded. It is useful for initializing state, settings up event listeners, or creating shadow DOM.
 
 **connectedCallback** is called every time the element is inserted into the DOM. Remind that an element can be inserted more than once to the DOM, especially when it is used in dynamic applications.
 

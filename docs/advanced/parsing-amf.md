@@ -71,7 +71,7 @@ const doc = await parser.parseFileAsync('file://./api.raml');
 The first argument of the `Core.parser()` function is the API type. This is one of the
 supported API formats listed at the beginning of this document.
 Second argument is the media type of the API. For RAML files it's always `application/raml`.
-However, Open API Specification comes with two flavors: `application/yaml` and `application/json`.
+However, Open API Specification comes with two flavours: `application/yaml` and `application/json`.
 
 The argument of `parseFileAsync()` is the location of the file to parse. It has to be
 a complete file location, including scheme. For local files use `file://` scheme. Relative
@@ -79,7 +79,7 @@ paths are accepted. You can also pass a HTTP link to the API specification file.
 
 ### Validating the API
 
-It may seems to be unescesary step but it may save you a lot of time if something
+It may seems to be unnecessary step but it may save you a lot of time if something
 is wrong with the API project. AMF will try to read as much as it can, even when
 the API is invalid. The invalid sections will be ignored.
 To avoid debugging and searching for solutions on StackOverflow, **always validate the API**.
@@ -102,7 +102,7 @@ The `type` in the code snippet above is the same type as the first argument of c
 The `AMF.validate()` function takes the parsed document as the first argument and one of the validation profiles
 included info AMF library, under `amf.ProfileNames` property.
 
-Fonally you can just print the validation result to the console to see warning/error messages, if any.
+Finally you can just print the validation result to the console to see warning/error messages, if any.
 
 ### Generating graph model
 

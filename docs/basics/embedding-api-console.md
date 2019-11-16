@@ -139,4 +139,4 @@ for OAuth1 and Digest authorization panels to work.
 
 ### OAuth 2 and HTTP requests factory dependencies
 
-This section is comming very soon.
+This section is coming very soon.
