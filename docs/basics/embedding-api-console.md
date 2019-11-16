@@ -137,6 +137,61 @@ for OAuth1 and Digest authorization panels to work.
 <script src="node_modules/jsrsasign/lib/jsrsasign-rsa-min.js"></script>
 ```
 
-### OAuth 2 and HTTP requests factory dependencies
+### OAuth 1/2 and HTTP requests factory dependencies
 
 This section is coming very soon.
+
+API Console as an embeddable custom element does not include sources for the components that handles OAuth2 authorization and making HTTP requests.
+
+#### If your application does not handle authorization
+
+Import the following libraries and declare them somewhere in the document.
+
+Note: those libraries are already installed with `api-console`.
+
+```html
+<html>
+  <head>
+    <script type="module">
+      import '@advanced-rest-client/oauth-authorization/oauth1-authorization.js';
+      import '@advanced-rest-client/oauth-authorization/oauth2-authorization.js';
+    </script>
+  </head>
+  <body>
+    <oauth1-authorization></oauth1-authorization>
+    <oauth2-authorization></oauth2-authorization>
+  </body>
+</html>
+```
+
+#### If your application does handle authorization
+
+Refer to [Handling authorization events](../advanced/handling-events-in-component.md#oauth-token-exchange) documentation to learn about integrating API Console with your application.
+
+### Making a HTTP request
+
+API Console by itself does not make requests to the API. There's a number of reasons for that. CORS and code duplication is the most important reasons.
+If your API is hosted on a different domain and CORS is not enabled for the documentation domain then you may want to handle requests by your own using some kind of proxy or other solutions.
+
+#### If your application does not handle HTTP requests
+
+Use `@advanced-rest-client/xhr-simple-request` component that works with API Console to make a HTTP request from the browser.
+
+Note: this library is already installed with `api-console`.
+
+```html
+<html>
+  <head>
+    <script type="module">
+      import '@advanced-rest-client/xhr-simple-request/xhr-simple-request.js';
+    </script>
+  </head>
+  <body>
+    <xhr-simple-request></xhr-simple-request>
+  </body>
+</html>
+```
+
+#### If your application does handle HTTP requests
+
+Refer to [Handling requests events](../advanced/handling-events-in-component.md#request-events_1) documentation to learn about integrating API Console with your application.
