@@ -1,24 +1,35 @@
-<p align="center">
-  <img width="200" src="https://open-wc.org/hero.png"></img>
-</p>
+# API Console www
 
-## Open-wc Starter App
+This project contains sources for API Console website.
 
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://github.com/open-wc)
+It consists of 3 services:
 
-## Quickstart
+-   Application www page
+-   Demo page with usage examples
+-   Documentation service
 
-To get started:
+All is bundled in a container and hosted on GKE.
 
-```sh
-npm init @open-wc
-# requires node 10 & npm 6 or higher
+## Building all services
+
+```bash
+npm run build:app
+npm run build:demo
+npm run build:docs
 ```
 
-## Scripts
+## Building and deploying the container
 
-- `start` runs your app for development, reloading on file changes
-- `start:build` runs your app after it has been built using the build command
-- `build` builds your app and outputs it in your `dist` directory
-- `test` runs your test suite with Karma
-- `lint` runs the linter for your project
+**Bump project version before builing and deploying new version.**
+
+```bash
+npm run gke:build
+npm run gke:deploy
+```
+
+You need to have access to Google's `api-console-a6952` project or change
+script's body to use different project.
+
+## Rolling update
+
+Go to [cloud console](https://console.cloud.google.com/kubernetes/deployment/us-central1-a/api-console-cluster/default/apiconsole-frontend?project=api-console-a6952) and select Rolling update from Actions menu. Roll out new version of the application for each container.

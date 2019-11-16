@@ -61,6 +61,7 @@
     "start:build": "cd dist && es-dev-server --open",
     "build:app": "rimraf dist && rollup -c rollup.config.js",
     "build:demo": "rimraf dist && rollup -c demo/rollup.config.js",
+    "build:docs": "mkdocs build",
     "start": "node ${SCRIPT:-app.js}",
     "start:dev": "es-dev-server --app-index index.html --node-resolve --open --watch",
     "start:compatibility": "es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch",
