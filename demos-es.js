@@ -74,5 +74,5 @@ app.get('*', (req, res) => {
 const server = app.listen(config.get('PORT'), () => {
   const { port } = server.address();
   /* eslint-disable-next-line no-console */
-  console.log(`App listening on port ${port}`);
+  console.log(`Demos app is listening on port ${port}`);
 });
