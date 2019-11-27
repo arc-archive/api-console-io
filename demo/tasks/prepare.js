@@ -16,6 +16,7 @@ const CmFiles = [
   'codemirror/mode/meta.js',
   'codemirror/mode/javascript/javascript.js',
   'codemirror/mode/xml/xml.js',
+  'codemirror/mode/yaml/yaml.js',
   'codemirror/mode/htmlmixed/htmlmixed.js',
   'codemirror/addon/lint/lint.js',
   'codemirror/addon/lint/json-lint.js',

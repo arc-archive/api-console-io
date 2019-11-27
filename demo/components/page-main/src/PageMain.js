@@ -4,6 +4,14 @@ export class PageMain extends LitElement {
   static get styles() {
     return [
       css`
+        :host {
+          position: absolute;
+          left: 0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+        }
+
         h1 {
           font-size: 112px;
           font-weight: 300;
@@ -82,19 +90,19 @@ export class PageMain extends LitElement {
         </div>
         <div class="list-item">
           <p>API console web component</p>
-          <a href="element.html">/element</a>
+          <a href="element">/element</a>
         </div>
         <div class="list-item">
           <p>API console with Anypoint theme</p>
-          <a href="themed/anypoint.html">/themed/anypoint</a>
+          <a href="themed/anypoint">/themed/anypoint</a>
         </div>
         <div class="list-item">
           <p>API console with dark theme</p>
-          <a href="themed/dark.html">/themed/dark</a>
+          <a href="themed/dark">/themed/dark</a>
         </div>
         <div class="list-item">
           <p>API console with code editor</p>
-          <a href="editor.html">/editor</a>
+          <a href="editor">/editor</a>
         </div>
       </main>
     `;

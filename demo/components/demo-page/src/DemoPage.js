@@ -3,6 +3,9 @@ import { linkMixin, routerMixin } from 'lit-element-router';
 import styles from './Styles.js';
 
 import '../../page-main/page-main.js';
+import '../../page-standalone/page-standalone.js';
+import '../../page-element/page-element.js';
+import '../../page-editor/page-editor.js';
 
 export class DemoPage extends routerMixin(linkMixin(LitElement)) {
   static get properties() {
@@ -31,17 +34,12 @@ export class DemoPage extends routerMixin(linkMixin(LitElement)) {
       {
         name: 'themed',
         pattern: '/themed/anypoint',
-        data: { css: 'anypoint.css' },
+        data: { theme: 'anypoint' },
       },
       {
         name: 'themed',
         pattern: '/themed/dark',
-        data: { css: 'dark.css' },
-      },
-      {
-        name: 'themed',
-        pattern: '/themed/dark',
-        data: { css: 'dark.css' },
+        data: { theme: 'dark' },
       },
       {
         name: 'editor',
@@ -99,6 +97,22 @@ export class DemoPage extends routerMixin(linkMixin(LitElement)) {
       case 'main':
         return html`
           <page-main></page-main>
+        `;
+      case 'standalone':
+        return html`
+          <page-standalone></page-standalone>
+        `;
+      case 'themed':
+        return html`
+          <page-standalone theme="${this.routeData.theme}"></page-standalone>
+        `;
+      case 'element':
+        return html`
+          <page-element></page-element>
+        `;
+      case 'editor':
+        return html`
+          <page-editor></page-editor>
         `;
       default:
         return html`

@@ -4,5 +4,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-plusplus': 'off',
     'no-await-in-loop': 'off',
+    'no-continue': 'off',
   },
 };
