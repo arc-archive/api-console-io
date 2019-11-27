@@ -66,6 +66,7 @@
     "start": "node ${SCRIPT:-app.js}",
     "start:demo:api": "node demos.js",
     "start:demo:dev": "cd demo && es-dev-server --app-index index.html --node-resolve --open --watch",
+    "start:demo:build": "cd demo-dist && es-dev-server --open",
     "start:dev": "es-dev-server --app-index index.html --node-resolve --open --watch",
     "start:build": "cd dist && es-dev-server --open",
     "start:docs": "mkdocs serve",
