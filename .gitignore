@@ -6,8 +6,8 @@
 .DS_Store
 
 ## npm
-/node_modules/
-/npm-debug.log
+node_modules
+npm-debug.log
 
 ## testing
 /coverage/
@@ -24,3 +24,4 @@
 config.json
 key.json
 certs/
+demo/vendor.js

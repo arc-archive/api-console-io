@@ -1,0 +1,8 @@
+{
+  "name": "api-console-demo-page",
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "lit-element-router": "^2.0.0-rc.9",
+    "lit-html": "^1.0.0"
+  }
+}
