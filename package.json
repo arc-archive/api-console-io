@@ -15,6 +15,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-winston": "^4.0.1",
+    "fs-extra": "^8.1.0",
     "nconf": "^0.10.0",
     "node-cache": "^5.0.2",
     "tmp": "^0.1.0",

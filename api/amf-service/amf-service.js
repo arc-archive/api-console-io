@@ -1,9 +1,9 @@
-import tmp from 'tmp';
 import { Duplex } from 'stream';
-import unzipper from 'unzipper';
-import path from 'path';
 import { fork } from 'child_process';
+import path from 'path';
 import fs from 'fs-extra';
+import unzipper from 'unzipper';
+import tmp from 'tmp';
 import { ApiSearch } from './api-search.js';
 import { readApiType } from './utils.js';
 
