@@ -25,6 +25,7 @@ import fs from 'fs';
 import compression from 'compression';
 import config from './config.js';
 import { requestLogger } from './lib/logging.js';
+import apiRouter from './api/index.js';
 
 const IS_PRODUCTION = config.get('NODE_ENV') === 'production';
 
@@ -45,6 +46,9 @@ app.use(compression());
 app.get('/_ah/health', (req, res) => {
   res.status(200).send('ok');
 });
+
+// API
+app.use('/api', apiRouter);
 
 const serveDemo = serveStatic('demo-dist');
 const demoDev = (req, res) => {
@@ -70,5 +74,5 @@ app.get('*', (req, res) => {
 const server = app.listen(config.get('PORT'), () => {
   const { port } = server.address();
   /* eslint-disable-next-line no-console */
-  console.log(`App listening on port ${port}`);
+  console.log(`Demos app is listening on port ${port}`);
 });
