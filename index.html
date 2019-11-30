@@ -15,6 +15,21 @@
   <meta property="og:type" content="website" />
   <meta property="og:description" content="An application to generate API documentation from RAML or OAS spec." />
   <meta property="og:locale" content="en_US" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153630896-1"></script>
+  <script>
+    /* eslint-disable no-undef, prefer-rest-params */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153630896-1', {
+      'linker': {
+        'domains': ['docs.api-console.io', 'demo.api-console.io', 'api-console.io']
+      }
+    });
+  </script>
+
   <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
   <link rel="stylesheet" type="text/css" href="index.css">
   <style>
