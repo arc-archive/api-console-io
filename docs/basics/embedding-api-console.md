@@ -14,7 +14,7 @@ is use of the console in React project of MuleSoft's [API Designer](https://gith
 
 ![API Console integrated with API Designer](../images/design-center.png)
 
-In Design Center the API console is integrated seamlessly creating a unifield
+In Design Center the API console is integrated seamlessly creating a unified
 experience for working with API project.
 
 ## Getting started
@@ -26,7 +26,7 @@ npm i --save @anypoint-web-components/api-console
 ```
 
 The next step depends on your setup. You may use framework like [Next.JS](https://nextjs.org/)
-or [Angular](https://angular.io/) and how specifically you would include the element depnds on this.
+or [Angular](https://angular.io/) and how specifically you would include the element depends on this.
 
 However, the console is a web custom element and just works like any other HTML tag.
 In this example we will use plain HTML to describe the principle.

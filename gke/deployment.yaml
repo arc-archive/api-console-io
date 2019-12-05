@@ -39,7 +39,7 @@ spec:
           secretName: api-console-sa-key
       containers:
       - name: apiconsole-www
-        image: gcr.io/api-console-a6952/api-console-io:0.0.11
+        image: gcr.io/api-console-a6952/api-console-io:0.1.0
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
@@ -53,7 +53,7 @@ spec:
         - name: PROJECT_ID
           value: api-console-a6952
       - name: apiconsole-demo-pages
-        image: gcr.io/api-console-a6952/api-console-io:0.0.11
+        image: gcr.io/api-console-a6952/api-console-io:0.1.0
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
@@ -67,7 +67,7 @@ spec:
         - name: PROJECT_ID
           value: api-console-a6952
       - name: apiconsole-docs-pages
-        image: gcr.io/api-console-a6952/api-console-io:0.0.11
+        image: gcr.io/api-console-a6952/api-console-io:0.1.0
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google

@@ -1,6 +1,6 @@
 {
   "name": "api-console-io",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "description": "API Console official web site",
   "author": "api-console-io",
   "license": "CC BY 2.0",
@@ -26,29 +26,29 @@
   "devDependencies": {
     "@advanced-rest-client/oauth-authorization": "^3.0.1",
     "@advanced-rest-client/xhr-simple-request": "^3.0.1",
-    "@anypoint-web-components/anypoint-button": "^1.0.14",
+    "@anypoint-web-components/anypoint-button": "^1.0.15",
     "@anypoint-web-components/anypoint-styles": "^1.0.1",
-    "@anypoint-web-components/api-console": "^6.0.0-preview.26",
-    "@open-wc/building-rollup": "^0.12.12",
-    "@open-wc/eslint-config": "^1.0.0",
+    "@anypoint-web-components/api-console": "^6.0.0-preview.31",
+    "@open-wc/building-rollup": "^0.14.8",
+    "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.4.1",
-    "@open-wc/testing-karma": "^3.2.5",
-    "@open-wc/testing-karma-bs": "^1.3.5",
-    "es-dev-server": "^1.26.1",
-    "eslint": "^6.7.1",
+    "@open-wc/testing-karma": "^3.2.9",
+    "@open-wc/testing-karma-bs": "^1.3.9",
+    "es-dev-server": "^1.28.0",
+    "eslint": "^6.7.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.7.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "lit-element": "^2.0.1",
-    "lit-element-router": "^2.0.0-rc.9",
+    "lit-element-router": "^2.0.0-rc.10",
     "lit-html": "^1.0.0",
     "rimraf": "^3.0.0",
-    "rollup": "^1.27.5",
+    "rollup": "^1.27.8",
     "rollup-plugin-cpy": "^2.0.1",
     "rollup-plugin-postcss": "^2.0.3",
-    "uglify-js": "^3.7.0",
+    "uglify-js": "^3.7.1",
     "webpack-merge": "^4.1.5"
   },
   "scripts": {
@@ -101,7 +101,6 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "prettier --write",
       "git add"
     ]
   }
