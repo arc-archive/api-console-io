@@ -36,10 +36,12 @@ nav:
 - 'Basic concepts':
     - 'About web components': 'basics/web-components.md'
     - 'Embedding API Console': 'basics/embedding-api-console.md'
+    - 'CORS': 'basics/cors.md'
 - 'Advanced topics':
     - 'Parsing API project': 'advanced/parsing-amf.md'
     - 'Working with AMF model': 'advanced/working-with-amf.md'
     - 'Handling DOM events': 'advanced/handling-events-in-component.md'
+    - 'Using API Components': 'advanced/working-with-components.md'
 - Building:
     - 'Docker and Kubernetes': 'building/docker.md'
     - 'Rollup': 'building/rollup.md'

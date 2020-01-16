@@ -25,7 +25,7 @@ This command assumes that you are running it in your API definition folder.
 
 The `-v "$PWD":/app/api` option tells the docker to mount current directory (`"$PWD"`) to `/app/api` of the running instance. The application looks for the API data there.
 
-`-e API_PROJECT="api.raml"` **is required** variable and it points to API main file in the current directory.
+`-e API_PROJECT="api.raml"` **is a required** variable and it points to the API main file in current directory.
 
 !!! info "Remote sources"
     The `API_PROJECT` variable can points to a publicly accessible API specification file on the internet.

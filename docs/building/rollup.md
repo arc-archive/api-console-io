@@ -138,7 +138,7 @@ Let's start with the `index.html` page. It is regular HTML page that includes `v
   <body>
     <script type="module" src="./apic-import.js"></script>
     <h1>My API page</h1>
-    <api-console></api-console-app>
+    <api-console apilocation="api.json"></api-console>
   </body>
 </html>
 ```
@@ -146,7 +146,7 @@ Let's start with the `index.html` page. It is regular HTML page that includes `v
 </p>
 </details>
 
-The sources file contains import of all required dependencies.
+The `apic-import.js` contains import of all required dependencies.
 
 <details><summary>apic-import.js</summary>
 <p>
@@ -162,7 +162,7 @@ import './api-console-master-styles.css';
 </p>
 </details>
 
-Finally this our configuration for building API Console demo page.
+Finally, this is our configuration for building API Console demo page.
 
 <details><summary>rollup.config.js (modern browsers)</summary>
 <p>
