@@ -1,5 +1,5 @@
 import { html, css } from 'lit-element';
-import '@anypoint-web-components/api-console/api-console.js';
+import 'api-console/api-console.js';
 import { moreVert, menu } from '@advanced-rest-client/arc-icons/ArcIcons.js';
 import '@anypoint-web-components/anypoint-button/anypoint-icon-button.js';
 import '@anypoint-web-components/anypoint-styles/colors.js';

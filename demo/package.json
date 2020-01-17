@@ -9,7 +9,7 @@
     "@anypoint-web-components/anypoint-item": "^1.0.5",
     "@anypoint-web-components/anypoint-listbox": "^1.0.4",
     "@anypoint-web-components/anypoint-menu-mixin": "^1.0.2",
-    "@anypoint-web-components/api-console": "^6.0.0-preview.28",
+    "api-console": "^6.0.0",
     "lit-element": "^2.0.1",
     "lit-element-router": "^2.0.0-rc.9",
     "lit-html": "^1.0.0"

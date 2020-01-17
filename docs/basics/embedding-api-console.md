@@ -22,7 +22,7 @@ experience for working with API project.
 Install the console in your project
 
 ```bash
-npm i --save @anypoint-web-components/api-console
+npm i --save api-console
 ```
 
 The next step depends on your setup. You may use framework like [Next.JS](https://nextjs.org/)
@@ -39,7 +39,7 @@ Embedding API console is two stage process: 1) import dependencies and 2) declar
 <html>
   <head>
     <script type="module">
-      import '@anypoint-web-components/api-console/api-console.js';
+      import 'api-console/api-console.js';
     </script>
   </head>
   <body>

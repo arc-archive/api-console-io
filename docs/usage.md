@@ -6,16 +6,10 @@ authors:
 date: 2019-11-15
 ---
 
-# Usage
-
-!!! warning "Preview version"
-    API Console currently is in preview version. Even though the API is pretty stable,
-    it may change without any warning.
-
 ## Installation
 
 ```bash
-npm i --save @anypoint-web-components/api-console
+npm i --save api-console
 ```
 
 ## Stand-alone application

@@ -155,7 +155,7 @@ The `apic-import.js` contains import of all required dependencies.
 import '@advanced-rest-client/oauth-authorization/oauth1-authorization.js';
 import '@advanced-rest-client/oauth-authorization/oauth2-authorization.js';
 import '@advanced-rest-client/xhr-simple-request/xhr-simple-request.js';
-import '@anypoint-web-components/api-console/api-console.js';
+import 'api-console/api-console.js';
 import './api-console-master-styles.css';
 ```
 
