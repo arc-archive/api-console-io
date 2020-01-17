@@ -39,8 +39,8 @@ body {
   }
 
   body {
-    background-color: #424242;
-    color: #fff;
+    background-color: var(--primary-background-color);
+    color: var(--text-color);
   }
 }
 
