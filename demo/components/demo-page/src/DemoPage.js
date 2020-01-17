@@ -69,7 +69,6 @@ export class DemoPage extends routerMixin(routerLinkMixin(LitElement)) {
     this.page = finalRoute;
     this.params = params;
     this.routeData = data;
-    console.log(route, params, query, data);
   }
 
   _clickHandler(e) {
