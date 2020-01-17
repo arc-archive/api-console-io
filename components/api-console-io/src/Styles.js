@@ -211,6 +211,18 @@ h2.section-title {
   align-items: center;
 }
 
+.end-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+}
+
+footer {
+  padding: 12px 0;
+}
+
 @media (max-height: 980px) {
   :host {
     --header-height: 70vh;

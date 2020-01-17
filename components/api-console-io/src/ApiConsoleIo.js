@@ -145,7 +145,16 @@ export class ApiConsoleIo extends LitElement {
             from RAML or OAS project.
           </p>
         </section>
+
+        <section class="end-actions">
+          <a href="https://docs.api-console.io" class="button-anchor">
+            <anypoint-button tabindex="-1" emphasis="low">See documentation</anypoint-button>
+          </a>
+        </section>
       </main>
+      <footer>
+        Brought to you with ❤ by MuleSoft, a Salesforce company.
+      </footer>
     `;
   }
 
