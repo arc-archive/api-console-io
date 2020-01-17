@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit-element';
-import { linkMixin, routerMixin } from 'lit-element-router';
+import { routerLinkMixin, routerMixin } from 'lit-element-router';
 import styles from './Styles.js';
 
 import '../../page-main/page-main.js';
@@ -7,7 +7,7 @@ import '../../page-standalone/page-standalone.js';
 import '../../page-element/page-element.js';
 import '../../page-editor/page-editor.js';
 
-export class DemoPage extends routerMixin(linkMixin(LitElement)) {
+export class DemoPage extends routerMixin(routerLinkMixin(LitElement)) {
   static get properties() {
     return {
       /**
@@ -59,7 +59,7 @@ export class DemoPage extends routerMixin(linkMixin(LitElement)) {
     this.addEventListener('click', this._clickHandler);
   }
 
-  router(route, params, query, data = {}) {
+  onRoute(route, params, query, data = {}) {
     let finalRoute;
     if (route === '/') {
       finalRoute = 'main';
@@ -69,6 +69,7 @@ export class DemoPage extends routerMixin(linkMixin(LitElement)) {
     this.page = finalRoute;
     this.params = params;
     this.routeData = data;
+    console.log(route, params, query, data);
   }
 
   _clickHandler(e) {
