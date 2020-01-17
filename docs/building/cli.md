@@ -6,13 +6,13 @@ The `api-console` command __version >= 2.0.0__ works with API Console _version 6
 
 ## Usage
 
-Install the tool globally (if possible, it required administrative privileges in some cases)
+Install the tool globally (if possible, it requires administrative privileges in some cases)
 
 ```sh
 npm i -g api-console-cli
 ```
 
-macOS and Linux uses should add `sudo` prefix to the command.
+macOS and Linux users should add `sudo` prefix to the command.
 
 ### Building API Console application
 
@@ -22,11 +22,11 @@ Syntax:
 api-console build -t TYPE [options] FILE
 ```
 
-The two required parameters is `-t` which describes the type of the API to process and the API main file.
+The two required parameters is `-t` which describes the type of the API to process and the location of the API main file.
 
 The type has to be one of the [supported API formats](../advanced/parsing-amf.md).
 
-By default the tool will choose `application/yaml` media type when processing an API. It works with RAML and OAS 3 (YAML) files. However, when processing OAS 2/3 JSON based API then specify `-m` parameter with `application/json` media type. For example:
+By default the tool will choose `application/yaml` media type when processing an API. It works with RAML and OAS 3 (YAML) files. However, when processing OAS 2/3 JSON based APIs then specify `-m` parameter with `application/json` media type. For example:
 
 ```sh
 api-console build -t "OAS 2.0" -m "application/json" api.json
@@ -60,7 +60,7 @@ Syntax:
 api-console serve [options] [LOCATION]
 ```
 
-When you build the console in current directory you can just run `api-console serve` command. When the server runs it checks whether `build` directory exists in current location (default output directory) and if so then it serves content from this folder. Otherwise it serves content from current directory.
+When the console was built in the current directory just run `api-console serve` command. It checks whether `build` directory exists in current location (default build output directory) and if so then it serves content from this folder. Otherwise it serves content from current directory.
 Alternatively specify the `LOCATION` parameter to point to the server root directory.
 
 ```sh
