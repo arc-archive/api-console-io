@@ -216,7 +216,49 @@ If you use one than more API console elements on single page at the same time wr
 ```
 Note: API console won't recognize string value as an ID of an element. You have to pass this value programmatically.
 
-### Layout control attributes
+#### allowCustomBaseUri
+
+Type: **Boolean**
+
+!!! info "Version info"
+    This property was added in API Console 6.2.0
+
+!!! info
+    Intended for OAS 3 multi server support
+
+When set the server selector renders an option to provide a custom base URI by the user.
+
+#### serverValue
+
+Type: **String**
+
+!!! info "Version info"
+    This property was added in API Console 6.2.0
+
+!!! info
+    Intended for OAS 3 multi server support
+
+The base URI of a server currently selected in the server selector.
+
+#### serverType
+
+Type: **String**
+
+!!! info "Version info"
+    This property was added in API Console 6.2.0
+
+!!! info
+    Intended for OAS 3 multi server support
+
+Selected type of a server in the server selector. Acceptable values are:
+
+-   `server` - the selection has a corresponding server in the API definition
+-   `uri` - the selection has a corresponding `slot="custom-base-uri"` child element
+-   `custom` - the selection has no corresponding element in the server selector and custom input is rendered.
+
+Note that `custom` value can be set only when `allowCustomBaseUri` is set.
+
+### View control attributes
 
 #### page
 
@@ -237,7 +279,8 @@ apic.selectedShapeType = 'summary';
 
 Type: **Boolean**
 
-==Deprecated but set it for apps==
+!!! warning "Deprecated"
+    Deprecated but set it for apps.
 
 When set it renders API console as a stand-alone application.
 Setting this option adds automation like handling media queries and sets mobile friendly styles.
@@ -389,5 +432,55 @@ The `selectedShape` property can have the following values:
 -   `security` - Security scheme documentation
 
 Normally API console passes `selectedShape` and `selectedShapeType` values from `api-navigation` to `api-documentation` and `api-request-panel` when navigation occurred. However it can be set programmatically to control the view.
+
+## API Console child elements
+
+The console accepts some specific children to be rendered in the corresponding to it's `slot` value places.
+The passed elements are regular HTML or custom elements.
+
+### Custom server values (custom-base-uri)
+
+!!! info "Version info"
+    This property was added in API Console 6.2.0
+
+When a child with a `slot` attribute set to `custom-base-uri` is added as a child of the console, this element is rendered in the server selector as a custom item. This way the console can render additional base URIs for the request panel.
+
+```html
+<api-console>
+  <div class="other-section" slot="custom-base-uri">Other options</div>
+  <anypoint-item slot="custom-base-uri" value="http://mocking-service.com">Mocking service</anypoint-item>
+  <anypoint-item slot="custom-base-uri" value="http://customServer.com2">Custom instance</anypoint-item>
+</api-console>
+```
+
+-   Only elements with `value` are selectable in the drop down. Other elements are rendered but cannot be selected.
+-   The value should be a valid URI without variables. Variables are not supported for custom servers.
+-   When children are set the server selector is always rendered.
+-   We recommend using `anypoint-item` as other list items are rendered as it, but you can use any HTML element.
+
+### Toolbar items (toolbar)
+
+You can pass any HTML markup to be rendered in the application toolbar. The elements are rendered after the API title, adjusted to the right.
+
+```html
+<api-console>
+  <button slot="toolbar" onclick="selectVersion()">Change API version</button>
+</api-console>
+```
+
+!!! info "Heads up"
+    This slot is only opened in the `<api-console-app>` element.
+
+### Content items (content)
+
+You can pass any HTML markup to be rendered above the main documentation content.
+
+```html
+<api-console>
+  <div slot="content">
+    <p>This paragraph is rendered above the main content on every page</p>
+  </div>
+</api-console>
+```
 
 [raml-aware]: https://elements.advancedrestclient.com/elements/raml-aware
