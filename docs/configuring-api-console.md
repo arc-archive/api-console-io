@@ -199,6 +199,23 @@ The request URL is a combination of base uri and endpoint's path.
 <api-console baseuri="https://proxy.api.com/endpoint"></api-console>
 ```
 
+#### eventsTarget
+
+Type: **Element**
+
+A HTML element used to listen for events on.
+If you use one than more API console elements on single page at the same time wrap the console is a HTML element (eg div) and set this value to the container so the request panel only listen to events dispatched inside the container. Otherwise events dispatched by the request panel will be handled by other instances of the console.
+
+```html
+<div id="target1">
+  <api-console events-target="target1"></api-console>
+</div>
+<div id="target2">
+  <api-console events-target="target2"></api-console>
+</div>
+```
+Note: API console won't recognize string value as an ID of an element. You have to pass this value programmatically.
+
 ### Layout control attributes
 
 #### page
@@ -347,22 +364,15 @@ Prohibits rendering documentation (the icon and the description) in request edit
 <api-console nodocs></api-console>
 ```
 
-#### eventsTarget
+#### rearrangeEndpoints
 
-Type: **Element**
+Type: **Boolean**
 
-A HTML element used to listen for events on.
-If you use one than more API console elements on single page at the same time wrap the console is a HTML element (eg div) and set this value to the container so the request panel only listen to events dispatched inside the container. Otherwise events dispatched by the request panel will be handled by other instances of the console.
+This property is passed to the `api-navigation` component.
 
-```html
-<div id="target1">
-  <api-console events-target="target1"></api-console>
-</div>
-<div id="target2">
-  <api-console events-target="target2"></api-console>
-</div>
-```
-Note: API console won't recognize string value as an ID of an element. You have to pass this value programmatically.
+When this value is set, the navigation component sorts the list of endpoints based on the `path` value of the endpoint, keeping the order of which endpoint was first in the list, relative to each other.
+
+**This is an experimental option and may disappear without warning.**
 
 ## Controlling the view
 
