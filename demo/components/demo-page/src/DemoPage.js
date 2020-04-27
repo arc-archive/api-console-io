@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit-element';
-import { routerLinkMixin, routerMixin } from 'lit-element-router';
+import { router as routerMixin, navigator as navMixin } from 'lit-element-router';
 import styles from './Styles.js';
 
 import '../../page-main/page-main.js';
@@ -7,7 +7,7 @@ import '../../page-standalone/page-standalone.js';
 import '../../page-element/page-element.js';
 import '../../page-editor/page-editor.js';
 
-export class DemoPage extends routerMixin(routerLinkMixin(LitElement)) {
+export class DemoPage extends navMixin(routerMixin(LitElement)) {
   static get properties() {
     return {
       /**
@@ -22,28 +22,32 @@ export class DemoPage extends routerMixin(routerLinkMixin(LitElement)) {
       {
         name: 'main',
         pattern: '',
+        data: {},
       },
       {
         name: 'standalone',
-        pattern: '/standalone',
+        pattern: '(/demo)?/standalone',
+        data: {},
       },
       {
         name: 'element',
-        pattern: '/element',
+        pattern: '(/demo)?/element',
+        data: {},
       },
       {
         name: 'themed',
-        pattern: '/themed/anypoint',
+        pattern: '(/demo)?/themed/anypoint',
         data: { theme: 'anypoint' },
       },
       {
         name: 'themed',
-        pattern: '/themed/dark',
+        pattern: '(/demo)?/themed/dark',
         data: { theme: 'dark' },
       },
       {
         name: 'editor',
-        pattern: '/editor',
+        pattern: '(/demo)?/editor',
+        data: {},
       },
     ];
   }
@@ -59,7 +63,7 @@ export class DemoPage extends routerMixin(routerLinkMixin(LitElement)) {
     this.addEventListener('click', this._clickHandler);
   }
 
-  onRoute(route, params, query, data = {}) {
+  router(route, params, query, data={}) {
     let finalRoute;
     if (route === '/') {
       finalRoute = 'main';
