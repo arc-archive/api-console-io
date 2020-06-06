@@ -1,0 +1,11 @@
+{
+  "name": "api-console-io-docs",
+  "description": "API Console documentation page",
+  "license": "CC BY 2.0",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "mkdocs serve",
+    "build": "mkdocs build"
+  }
+}

@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit-element';
-import { AnypointMenuMixin } from '@anypoint-web-components/anypoint-menu-mixin/anypoint-menu-mixin.js';
+import { AnypointMenuMixin } from '@anypoint-web-components/anypoint-menu-mixin';
 
 class ApiFileSelector extends AnypointMenuMixin(LitElement) {
   static get styles() {

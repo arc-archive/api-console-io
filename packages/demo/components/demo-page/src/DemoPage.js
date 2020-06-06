@@ -26,27 +26,27 @@ export class DemoPage extends navMixin(routerMixin(LitElement)) {
       },
       {
         name: 'standalone',
-        pattern: '(/demo)?/standalone',
+        pattern: '/standalone',
         data: {},
       },
       {
         name: 'element',
-        pattern: '(/demo)?/element',
+        pattern: '/element',
         data: {},
       },
       {
         name: 'themed',
-        pattern: '(/demo)?/themed/anypoint',
+        pattern: '/themed/anypoint',
         data: { theme: 'anypoint' },
       },
       {
         name: 'themed',
-        pattern: '(/demo)?/themed/dark',
+        pattern: '/themed/dark',
         data: { theme: 'dark' },
       },
       {
         name: 'editor',
-        pattern: '(/demo)?/editor',
+        pattern: '/editor',
         data: {},
       },
     ];
