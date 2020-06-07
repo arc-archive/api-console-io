@@ -25,6 +25,7 @@ import fs from 'fs';
 import compression from 'compression';
 import config from './config.js';
 import { requestLogger } from './lib/logging.js';
+import { requiresHttpsRedirect } from './lib/Utils.js';
 
 const IS_PRODUCTION = config.get('NODE_ENV') === 'production';
 
@@ -44,6 +45,16 @@ app.use(compression());
 
 app.get('/_ah/health', (req, res) => {
   res.status(200).send('ok');
+});
+
+app.use((req, res, next) => {
+  if (requiresHttpsRedirect(req)) {
+    const { host } = req.headers;
+    const newUrl = `https://${host}${req.url}`;
+    res.redirect(301, newUrl);
+    return;
+  }
+  next();
 });
 
 const serveDemo = serveStatic('demo-dist');

@@ -1,4 +1,5 @@
 import cors from 'cors';
+// import { logger } from '../../lib/logging.js';
 
 export class BaseApi {
   constructor() {

@@ -25,6 +25,7 @@ import fs from 'fs';
 import compression from 'compression';
 import config from './config.js';
 import { requestLogger } from './lib/logging.js';
+// import { isLocalhost } from './lib/Utils.js';
 
 const IS_PRODUCTION = config.get('NODE_ENV') === 'production';
 
@@ -45,6 +46,17 @@ app.use(compression());
 app.get('/_ah/health', (req, res) => {
   res.status(200).send('ok');
 });
+
+// app.use((req, res, next) => {
+//   const host = req.get('host');
+//   if (req.protocol === 'http' && !isLocalhost(host)) {
+//     const newUrl = `https://${host}${req.url}`;
+//     logger.info(`Redirecting to secure context ${newUrl}`);
+//     res.redirect(301, newUrl);
+//     return;
+//   }
+//   next();
+// });
 
 const serveMain = serveStatic('www-dist');
 const mainDev = (req, res) => {

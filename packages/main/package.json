@@ -29,12 +29,6 @@
     "test:watch": "karma start --auto-watch=true --single-run=false",
     "test:sl": "karma start karma.sl.config.js --compatibility auto --coverage"
   },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ]
-  },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "always"

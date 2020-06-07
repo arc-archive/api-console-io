@@ -8,7 +8,7 @@ extra:
   search:
     language: 'en, de, ru'
   social:
-  - type: 'github'
+  - icon: fontawesome/brands/github-alt
     link: 'https://github.com/mulesoft/api-console'
 repo_name: 'mulesoft/api-console'
 repo_url: 'https://github.com/mulesoft/api-console'
@@ -28,6 +28,7 @@ markdown_extensions:
       permalink: true
 site_dir: docs-dist
 google_analytics: ['UA-153630896-1', 'docs.api-console.io']
+docs_dir: packages/docs/
 
 nav:
 - Introduction: 'index.md'

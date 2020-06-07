@@ -3,18 +3,18 @@
   "description": "API Console demo page",
   "license": "CC BY 2.0",
   "dependencies": {
-    "@advanced-rest-client/arc-icons": "^3.0.4",
-    "@advanced-rest-client/oauth-authorization": "^4.0.2",
+    "@advanced-rest-client/arc-icons": "^3.1.0",
+    "@advanced-rest-client/oauth-authorization": "^4.0.3",
     "@advanced-rest-client/xhr-simple-request": "^3.0.1",
-    "@anypoint-web-components/anypoint-button": "^1.0.14",
-    "@anypoint-web-components/anypoint-dropdown": "^1.0.1",
-    "@anypoint-web-components/anypoint-item": "^1.0.5",
-    "@anypoint-web-components/anypoint-listbox": "^1.0.4",
-    "@anypoint-web-components/anypoint-menu-mixin": "^1.0.2",
+    "@anypoint-web-components/anypoint-button": "^1.1.1",
+    "@anypoint-web-components/anypoint-dropdown": "^1.1.0",
+    "@anypoint-web-components/anypoint-item": "^1.0.7",
+    "@anypoint-web-components/anypoint-listbox": "^1.1.1",
+    "@anypoint-web-components/anypoint-menu-mixin": "^1.1.1",
     "@anypoint-web-components/anypoint-styles": "^1.0.1",
-    "api-console": "^6.1.1",
+    "api-console": "^6.2.1",
     "lit-element": "^2.3.1",
-    "lit-element-router": "^2.0.1",
+    "lit-element-router": "^2.0.3",
     "lit-html": "^1.2.1"
   },
   "devDependencies": {
@@ -22,10 +22,10 @@
     "@open-wc/eslint-config": "^2.0.6",
     "@open-wc/prettier-config": "^1.1.0",
     "@open-wc/testing": "^2.5.17",
-    "@open-wc/testing-karma": "^3.4.0",
-    "es-dev-server": "^1.53.0",
-    "uglify-js": "^3.9.3",
-    "fs-extra": "^9.0.0"
+    "@open-wc/testing-karma": "^3.4.2",
+    "es-dev-server": "^1.54.1",
+    "fs-extra": "^9.0.1",
+    "uglify-js": "^3.9.4"
   },
   "scripts": {
     "start": "es-dev-server --app-index index.html --node-resolve --open --watch",
