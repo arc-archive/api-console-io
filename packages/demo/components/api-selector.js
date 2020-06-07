@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit-element';
-import { AnypointMenuMixin } from '@anypoint-web-components/anypoint-menu-mixin/anypoint-menu-mixin.js';
+import { AnypointMenuMixin } from '@anypoint-web-components/anypoint-menu-mixin';
 import '@anypoint-web-components/anypoint-button/anypoint-icon-button.js';
 import '@anypoint-web-components/anypoint-button/anypoint-button.js';
 import { close, addCircleOutline } from '@advanced-rest-client/arc-icons/ArcIcons.js';

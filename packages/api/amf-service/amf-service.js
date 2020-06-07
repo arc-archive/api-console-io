@@ -214,7 +214,7 @@ export class AmfService {
 
   /**
    * Parses API data using AMF parser.
-   * @param {?String} mainFile Main API file to use.
+   * @param {String=} mainFile Main API file to use.
    * @return {Promise<Object>} A promise resolved to AMF model.
    */
   async parse(mainFile) {
@@ -243,7 +243,7 @@ export class AmfService {
 
   /**
    * Unzpis the source to a tem folder.
-   * @return {Promise}
+   * @return {Promise<void>}
    */
   async _unzipSource() {
     let buffer;
@@ -268,8 +268,8 @@ export class AmfService {
 
   /**
    * Unzips API folder and returns path to the folder in tmp location.
-   * @param {ArrayBuffer} buffer Zip data
-   * @return {Promise}
+   * @param {Buffer} buffer Zip data
+   * @return {Promise<string>}
    */
   _unzip(buffer) {
     this.tmpobj = tmp.dirSync();
@@ -426,6 +426,7 @@ export class AmfService {
         source: apiLocation,
         from: type,
         validate: this.validate,
+        apiRoot: this._workingDir,
       });
     });
   }

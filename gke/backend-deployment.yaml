@@ -18,64 +18,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apiconsole-frontend
+  name: apiconsole-backend
   labels:
     app: apiconsole-www
 spec:
   selector:
     matchLabels:
       app: apiconsole
-      tier: frontend
+      tier: backend
   replicas: 2
   template:
     metadata:
       labels:
         app: apiconsole
-        tier: frontend
+        tier: backend
     spec:
       volumes:
       - name: google-cloud-key
         secret:
           secretName: api-console-sa-key
       containers:
-      - name: apiconsole-www
+      - name: api-console-api
         image: gcr.io/api-console-a6952/api-console-io:0.2.8
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google
         env:
         - name: SCRIPT
-          value: app.js
+          value: api.js
         - name: PORT
-          value: "50001"
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/key.json
-        - name: PROJECT_ID
-          value: api-console-a6952
-      - name: apiconsole-demo-pages
-        image: gcr.io/api-console-a6952/api-console-io:0.2.8
-        volumeMounts:
-        - name: google-cloud-key
-          mountPath: /var/secrets/google
-        env:
-        - name: SCRIPT
-          value: demos.js
-        - name: PORT
-          value: "50002"
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/key.json
-        - name: PROJECT_ID
-          value: api-console-a6952
-      - name: apiconsole-docs-pages
-        image: gcr.io/api-console-a6952/api-console-io:0.2.8
-        volumeMounts:
-        - name: google-cloud-key
-          mountPath: /var/secrets/google
-        env:
-        - name: SCRIPT
-          value: docs.js
-        - name: PORT
-          value: "50003"
+          value: "50004"
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/key.json
         - name: PROJECT_ID

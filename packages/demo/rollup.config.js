@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { createSpaConfig } from '@open-wc/building-rollup';
 import path from 'path';
 import merge from 'deepmerge';

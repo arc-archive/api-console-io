@@ -1,6 +1,6 @@
 import express from 'express';
 import parserRoute from './ParserRoute.js';
-import { logger } from '../lib/logging.js';
+import { logger } from '../../lib/logging.js';
 
 const router = express.Router();
 export default router;
@@ -15,13 +15,5 @@ router.use((req, res) => {
   res.status(404).send({
     error: true,
     message,
-  });
-});
-
-router.use((err, req, res) => {
-  logger.error(err);
-  res.send({
-    error: true,
-    message: 'There was an error. That is all we can share.',
   });
 });

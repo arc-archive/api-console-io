@@ -1,4 +1,6 @@
 const amf = require('amf-client-js');
+const {FileResourceLoader} = require('./env/FileResourceLoader.js');
+
 // import amf from 'amf-client-js';
 amf.plugins.document.WebApi.register();
 amf.plugins.document.Vocabularies.register();
@@ -25,6 +27,45 @@ async function validateDoc(type, doc) {
   const result = await amf.AMF.validate(doc, validateProfile);
   process.send({ validation: result.toString() });
 }
+
+function setupEnvironment(apiPath) {
+  const env = amf.client.DefaultEnvironment.apply();
+  const resourceLoader = new FileResourceLoader(apiPath);
+  return env.addClientLoader(resourceLoader);
+  // return env;
+
+  // try {
+  //   const resourceLoader = new FileResourceLoader(apiPath);
+  //   const env = amf.client.environment.Environment.apply(resourceLoader);
+  //   // env = env.addClientLoader(resourceLoader);
+  //   return env;
+  // } catch (e) {
+  //   console.error(e);
+  //   throw e;
+  // }
+}
+
+function getParser(type, contentType, env) {
+  switch (type) {
+    case 'RAML 0.8':
+      return new amf.Raml08Parser(env);
+    case 'RAML 1.0':
+      return new amf.Raml10Parser(env);
+    case 'OAS 2.0':
+      if (contentType === 'application/json') {
+        return new amf.Oas20Parser(env);
+      }
+      return new amf.Oas20YamlParser(env);
+    case 'OAS 3.0':
+      if (contentType === 'application/json') {
+        return new amf.Oas30Parser(env);
+      }
+      return new amf.Oas30YamlParser(env);
+    default:
+      return amf.Core.parser("AMF Graph", "application/ld+json")
+  }
+}
+
 /**
  * AMF parser to be called in a child process.
  *
@@ -38,14 +79,16 @@ async function validateDoc(type, doc) {
 async function processData(data) {
   const sourceFile = data.source;
   const { type, contentType } = data.from;
-  const { validate } = data;
+  const { validate, apiRoot } = data;
   if (!initied) {
     await amf.Core.init();
   }
   /* eslint-disable-next-line require-atomic-updates */
   initied = true;
+  const env = setupEnvironment(apiRoot);
   const file = `file://${sourceFile}`;
-  const parser = amf.Core.parser(type, contentType);
+  // const parser = amf.Core.parser(type, contentType);
+  const parser = getParser(type, contentType, env);
   let doc = await parser.parseFileAsync(file);
   if (validate) {
     await validateDoc(type, doc);
