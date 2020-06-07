@@ -16,7 +16,7 @@ class FileResourceLoader {
     const localPath = path.replace('file://', '');
     const realPath = await fs.realpath(localPath);
     if (!realPath.includes(this.workingDir)) {
-      throw new Error('Unable to include file from the outside of the API root folder');
+      return new Error('Unable to include file from the outside of the API root folder');
     }
     return this.resourceLoader.fetch(path);
   }
