@@ -29,9 +29,18 @@ async function validateDoc(type, doc) {
 }
 
 function setupEnvironment(apiPath) {
-  const env = amf.client.DefaultEnvironment.apply();
-  const resourceLoader = new FileResourceLoader(apiPath);
-  return env.addClientLoader(resourceLoader);
+  const empty = new amf.client.environment.Environment();
+  empty.addClientLoader(new amf.JsServerFileResourceLoader());
+  empty.addClientLoader(new FileResourceLoader(apiPath));
+  return empty;
+  // const env = amf.client.environment.Environment
+  // .empty()
+  // .addClientLoader(new amf.JsServerFileResourceLoader())
+  // .addClientLoader(new FileResourceLoader(apiPath));
+  // return env;
+  // const env = amf.client.DefaultEnvironment.apply();
+  // const resourceLoader = new FileResourceLoader(apiPath);
+  // return env.addClientLoader(resourceLoader);
   // return env;
 
   // try {
@@ -108,6 +117,7 @@ process.on('message', async data => {
       api,
     });
   } catch (cause) {
+    console.log(cause.toString());
     let m = `AMF parser: Unable to parse API ${data.source}.\n`;
     m += cause.s$1 || cause.message;
     process.send({ error: m });

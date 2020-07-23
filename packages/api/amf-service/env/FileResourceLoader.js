@@ -9,6 +9,10 @@ class FileResourceLoader {
     this.resourceLoader = new amf.JsServerFileResourceLoader();
   }
 
+  accepts(path) {
+    return path.startsWith('file://') || path.startsWith('http://');
+  }
+
   async fetch(path) {
     if (!path) {
       throw new Error('Empty path given.');
@@ -72,10 +76,6 @@ class FileResourceLoader {
       return true;
     }
     return false;
-  }
-
-  accepts(path) {
-    return path.startsWith('file://') || path.startsWith('http://');
   }
 
   static async fail() {
