@@ -1,5 +1,9 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
+
 const UglifyJS = require('uglify-js');
 const fs = require('fs-extra');
+const path = require('path');
 
 const CryptoFiles = [
   'cryptojslib/components/core.js',
@@ -34,9 +38,9 @@ async function prepareDemo() {
     const full = require.resolve(file);
     code[file] = await fs.readFile(full, 'utf8');
   }
-
+  // @ts-ignore
   const result = UglifyJS.minify(code);
-  await fs.writeFile('demo/vendor.js', result.code, 'utf8');
+  await fs.writeFile(path.join(__dirname, '..', 'vendor.js'), result.code, 'utf8');
 }
 
 prepareDemo();
