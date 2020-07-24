@@ -68,6 +68,7 @@
     "start:demo:build": "cd demo-dist && es-dev-server --open",
     "start:dev": "cd packages/main/ && es-dev-server --app-index index.html --node-resolve --open --watch",
     "start:docs": "mkdocs serve",
+    "build": "npm run build:www && npm run build:demo && npm run build:docs",
     "build:www": "rimraf www-dist && rollup -c packages/main/rollup.config.js",
     "build:demo": "rimraf demo-dist && rollup -c packages/demo/rollup.config.js",
     "build:docs": "mkdocs build",
