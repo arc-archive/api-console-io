@@ -29,29 +29,9 @@ async function validateDoc(type, doc) {
 }
 
 function setupEnvironment(apiPath) {
-  const empty = new amf.client.environment.Environment();
-  empty.addClientLoader(new amf.JsServerFileResourceLoader());
-  empty.addClientLoader(new FileResourceLoader(apiPath));
-  return empty;
-  // const env = amf.client.environment.Environment
-  // .empty()
-  // .addClientLoader(new amf.JsServerFileResourceLoader())
-  // .addClientLoader(new FileResourceLoader(apiPath));
-  // return env;
-  // const env = amf.client.DefaultEnvironment.apply();
-  // const resourceLoader = new FileResourceLoader(apiPath);
-  // return env.addClientLoader(resourceLoader);
-  // return env;
-
-  // try {
-  //   const resourceLoader = new FileResourceLoader(apiPath);
-  //   const env = amf.client.environment.Environment.apply(resourceLoader);
-  //   // env = env.addClientLoader(resourceLoader);
-  //   return env;
-  // } catch (e) {
-  //   console.error(e);
-  //   throw e;
-  // }
+  return new amf.client.environment.Environment()
+    .addClientLoader(new amf.JsServerFileResourceLoader())
+    .addClientLoader(new FileResourceLoader(apiPath));
 }
 
 function getParser(type, contentType, env) {
