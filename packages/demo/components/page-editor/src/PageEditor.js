@@ -1,12 +1,16 @@
+/* eslint-disable class-methods-use-this */
 import { html, css, LitElement } from 'lit-element';
 import 'api-console/api-console.js';
 import { menu } from '@advanced-rest-client/arc-icons/ArcIcons.js';
 import '@anypoint-web-components/anypoint-button/anypoint-icon-button.js';
 import '@anypoint-web-components/anypoint-styles/colors.js';
-import '@advanced-rest-client/xhr-simple-request/xhr-simple-request.js';
+import '@api-components/api-request/xhr-simple-request.js';
 import '@advanced-rest-client/oauth-authorization/oauth1-authorization.js';
 import '@advanced-rest-client/oauth-authorization/oauth2-authorization.js';
+import '@polymer/paper-toast/paper-toast.js';
 import defaultApiValue from './default-raml.js';
+
+/** @typedef {import('@polymer/paper-toast').PaperToastElement} PaperToastElement */
 
 const SOURCE_KEY = 'api.source';
 
@@ -72,7 +76,7 @@ export class PageEditor extends LitElement {
           cursor: row-resize;
         }
 
-        paper-progress {
+        progress {
           width: 100%;
           position: absolute;
         }
@@ -83,7 +87,7 @@ export class PageEditor extends LitElement {
         }
 
         .icon {
-          display: inlink-block;
+          display: inline-block;
           width: 24px;
           height: 24px;
           fill: currentColor;
@@ -122,6 +126,7 @@ export class PageEditor extends LitElement {
     super();
     const storedSource = localStorage.getItem(SOURCE_KEY);
     this.source = storedSource || defaultApiValue;
+    // @ts-ignore
     this.apiBase = window.ApiDemos.apiBase;
   }
 
@@ -169,7 +174,7 @@ export class PageEditor extends LitElement {
     }
   }
 
-  _sourceChnaged(e) {
+  _sourceChanged(e) {
     this.source = e.detail.value;
   }
 
@@ -202,7 +207,7 @@ export class PageEditor extends LitElement {
             lineNumbers
             id="codeSource"
             .value="${source}"
-            @value-changed="${this._sourceChnaged}"
+            @value-changed="${this._sourceChanged}"
           ></code-mirror>
         </div>
         <div class="main-border"></div>
@@ -219,14 +224,14 @@ export class PageEditor extends LitElement {
           </div>
           ${loading
             ? html`
-                <paper-progress indeterminate></paper-progress>
+                <progress></progress>
               `
             : ''}
           <api-console
             .amf="${model}"
             selectedShape="summary"
             selectedShapeType="summary"
-            redirecturi="https://auth.advancedrestclient.com/oauth-popup.html"
+            redirectUri="https://auth.advancedrestclient.com/oauth-popup.html"
             ?navigationOpened="${navigationOpened}"
             @navigation-close="${this._navigationClosed}"
           >

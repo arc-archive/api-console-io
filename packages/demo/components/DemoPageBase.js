@@ -1,13 +1,18 @@
+/* eslint-disable class-methods-use-this */
 import { html, LitElement } from 'lit-element';
-import '@advanced-rest-client/xhr-simple-request/xhr-simple-request.js';
+import '@api-components/api-request/xhr-simple-request.js';
 import '@advanced-rest-client/oauth-authorization/oauth1-authorization.js';
 import '@advanced-rest-client/oauth-authorization/oauth2-authorization.js';
 import '@anypoint-web-components/anypoint-item/anypoint-item.js';
+import '@polymer/paper-toast/paper-toast.js';
 
 import './loader-screen.js';
 import './upload-api-screen.js';
 import './api-file-selector.js';
 import './api-selector.js';
+
+/** @typedef {import('./api-selector').ApiSelector} ApiSelector */
+/** @typedef {import('api-console').ApiConsole} ApiConsole */
 
 const apiCache = new WeakMap();
 
@@ -47,6 +52,7 @@ export class DemoPageBase extends LitElement {
   constructor() {
     super();
     this.loading = true;
+    // @ts-ignore
     this.apiBase = window.ApiDemos.apiBase;
     this.apis = [
       ['google-drive-api', 'Google Drive API'],
@@ -61,7 +67,7 @@ export class DemoPageBase extends LitElement {
   }
 
   selectFirstApi() {
-    const listbox = this.shadowRoot.querySelector('api-selector');
+    const listbox = /** @type ApiSelector */ (this.shadowRoot.querySelector('api-selector'));
     if (listbox) {
       listbox.selected = 0;
     }
@@ -109,7 +115,7 @@ export class DemoPageBase extends LitElement {
   }
 
   _modelChanged() {
-    const apic = this.shadowRoot.querySelector('api-console,api-console-app');
+    const apic = /** @type ApiConsole */ (this.shadowRoot.querySelector('api-console,api-console-app'));
     apic.selectedShape = 'summary';
     apic.selectedShapeType = 'summary';
   }
@@ -162,7 +168,7 @@ export class DemoPageBase extends LitElement {
     this.hasApiFileSelector = true;
   }
 
-  _apiHandidateHandler(e) {
+  _apiCandidateHandler(e) {
     const file = e.detail;
     const key = this.candidatesKey;
     this.candidatesKey = undefined;
@@ -228,13 +234,8 @@ export class DemoPageBase extends LitElement {
     if (this.hasApiFileSelector) {
       const items = this.apiCandidates;
       return html`
-        <api-file-selector @candidate-selected="${this._apiHandidateHandler}">
-          ${items.map(
-            item =>
-              html`
-                <anypoint-item>${item}</anypoint-item>
-              `,
-          )}
+        <api-file-selector @candidate-selected="${this._apiCandidateHandler}">
+          ${items.map((item) => html`<anypoint-item>${item}</anypoint-item>`)}
         </api-file-selector>
       `;
     }
@@ -243,8 +244,13 @@ export class DemoPageBase extends LitElement {
 
   render() {
     return html`
-      ${this._renderPage()} ${this.apiSelectorTemplate()}
+      ${this._renderPage()} 
+      ${this.apiSelectorTemplate()}
       <loader-screen .visible="${this.loading}"></loader-screen>
     `;
+  }
+
+  demoTemplate() {
+    return html``;
   }
 }

@@ -44,6 +44,7 @@ class ApiFileSelector extends AnypointMenuMixin(LitElement) {
         margin: 0 24px;
         line-height: 64px;
       }
+    }
     `;
   }
 

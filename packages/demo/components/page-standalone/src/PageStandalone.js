@@ -34,14 +34,19 @@ export class PageStandalone extends DemoPageBase {
     ];
   }
 
+  get compatibility() {
+    return this.theme === 'anypoint';
+  }
+
   static get properties() {
     return {
       theme: { type: String },
     };
   }
 
-  get compatibility() {
-    return this.theme === 'anypoint';
+  constructor() {
+    super();
+    this.theme = undefined;
   }
 
   demoTemplate() {
@@ -53,8 +58,8 @@ export class PageStandalone extends DemoPageBase {
           `
         : ''}
       <api-console-app
-        redirecturi="https://auth.advancedrestclient.com/oauth-popup.html"
-        oauth2clientid="821776164331-rserncqpdsq32lmbf5cfeolgcoujb6fm.apps.googleusercontent.com"
+        redirectUri="https://auth.advancedrestclient.com/oauth-popup.html"
+        oauth2ClientId="821776164331-rserncqpdsq32lmbf5cfeolgcoujb6fm.apps.googleusercontent.com"
         rearrangeEndpoints
         ?compatibility="${compatibility}"
         .amf="${model}"

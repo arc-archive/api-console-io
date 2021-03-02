@@ -75,20 +75,23 @@ export class DemoPage extends navMixin(routerMixin(LitElement)) {
     this.routeData = data;
   }
 
+  /**
+   * @param {Event} e 
+   */
   _clickHandler(e) {
     if (!e.composed) {
       return;
     }
-    const path = e.composedPath();
-    const anhor = path.find(node => node.nodeName === 'A');
-    if (!anhor) {
+    const path = /** @type Element[] */ (e.composedPath());
+    const anchor = /** @type HTMLAnchorElement */ (path.find((node) => node.nodeName === 'A'));
+    if (!anchor) {
       return;
     }
-    const href = anhor.getAttribute('href');
+    const href = anchor.getAttribute('href');
     if (!href) {
       return;
     }
-    if (anhor.href.indexOf(window.location.host) !== 0) {
+    if (anchor.href.indexOf(window.location.host) !== 0) {
       return;
     }
     e.preventDefault();

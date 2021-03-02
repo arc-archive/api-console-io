@@ -4,7 +4,7 @@ import '@anypoint-web-components/anypoint-button/anypoint-icon-button.js';
 import '@anypoint-web-components/anypoint-button/anypoint-button.js';
 import { close, addCircleOutline } from '@advanced-rest-client/arc-icons/ArcIcons.js';
 
-class ApiSelector extends AnypointMenuMixin(LitElement) {
+export class ApiSelector extends AnypointMenuMixin(LitElement) {
   static get styles() {
     return css`
       :host {
@@ -18,7 +18,7 @@ class ApiSelector extends AnypointMenuMixin(LitElement) {
         transform-origin: top right;
         transition: transform 0.3s cubic-bezier(0.74, 0.03, 0.3, 0.97);
         position: fixed;
-        box-shadow: var(--anypoiont-dropdown-shaddow);
+        box-shadow: var(--anypoint-dropdown-shadow);
       }
 
       :host([opened]) {
@@ -42,7 +42,7 @@ class ApiSelector extends AnypointMenuMixin(LitElement) {
       }
 
       .icon {
-        display: inlink-block;
+        display: inline-block;
         width: 24px;
         height: 24px;
         fill: currentColor;
@@ -80,7 +80,7 @@ class ApiSelector extends AnypointMenuMixin(LitElement) {
     this.opened = false;
   }
 
-  opeen() {
+  open() {
     this.opened = true;
   }
 

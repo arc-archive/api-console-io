@@ -3,7 +3,7 @@ import 'api-console/api-console.js';
 import { moreVert, menu } from '@advanced-rest-client/arc-icons/ArcIcons.js';
 import '@anypoint-web-components/anypoint-button/anypoint-icon-button.js';
 import '@anypoint-web-components/anypoint-styles/colors.js';
-import '@advanced-rest-client/xhr-simple-request/xhr-simple-request.js';
+import '@api-components/api-request/xhr-simple-request.js';
 import '@advanced-rest-client/oauth-authorization/oauth1-authorization.js';
 import '@advanced-rest-client/oauth-authorization/oauth2-authorization.js';
 import { DemoPageBase } from '../../DemoPageBase.js';
@@ -100,8 +100,8 @@ export class PageElement extends DemoPageBase {
         </div>
 
         <api-console
-          redirecturi="https://auth.advancedrestclient.com/oauth-popup.html"
-          oauth2clientid="821776164331-rserncqpdsq32lmbf5cfeolgcoujb6fm.apps.googleusercontent.com"
+          redirectUri="https://auth.advancedrestclient.com/oauth-popup.html"
+          oauth2ClientId="821776164331-rserncqpdsq32lmbf5cfeolgcoujb6fm.apps.googleusercontent.com"
           .amf="${model}"
         >
         </api-console>

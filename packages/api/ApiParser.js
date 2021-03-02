@@ -12,11 +12,11 @@ function bufferIsZip(buffer) {
 }
 
 /**
- * Reads data from the incomming message.
+ * Reads data from the incoming message.
  * @param {Object} request The request object
  * @return {Promise<Buffer>}
  */
-async function readIncommingMessage(request) {
+async function readIncomingMessage(request) {
   return new Promise((resolve, reject) => {
     let message;
     request.on('data', chunk => {
@@ -40,7 +40,7 @@ async function readIncommingMessage(request) {
 
 export class ApiParser {
   async parseFile(request) {
-    const buff = await readIncommingMessage(request);
+    const buff = await readIncomingMessage(request);
     const data = await this.processBuffer(buff);
     return data;
   }
@@ -106,7 +106,7 @@ export class ApiParser {
   }
 
   async parseCandidate(request) {
-    const buff = await readIncommingMessage(request);
+    const buff = await readIncomingMessage(request);
     let message = buff.toString();
     try {
       message = JSON.parse(message);
