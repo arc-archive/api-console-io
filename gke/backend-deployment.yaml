@@ -39,7 +39,7 @@ spec:
           secretName: api-console-sa-key
       containers:
       - name: api-console-api
-        image: gcr.io/api-console-a6952/api-console-io:0.2.9
+        image: gcr.io/api-console-a6952/api-console-io:0.2.12
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google

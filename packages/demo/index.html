@@ -56,19 +56,6 @@
   }
   </style>
   <script src="vendor.js"></script>
-  <script>
-    let apiBase;
-    if (window.location.port) {
-      // Dev mode,
-      apiBase = window.location.origin.replace(window.location.port, '8081');
-    } else {
-      apiBase = 'https://api.api-console.io';
-    }
-    apiBase = `${apiBase}/v1`;
-    window.ApiDemos = {
-      apiBase
-    };
-  </script>
 </head>
 
 <body>

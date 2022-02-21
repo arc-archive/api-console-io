@@ -11,6 +11,8 @@ import '@polymer/paper-toast/paper-toast.js';
 import defaultApiValue from './default-raml.js';
 
 /** @typedef {import('@polymer/paper-toast').PaperToastElement} PaperToastElement */
+/** @typedef {import('@advanced-rest-client/events').Amf.ApiParseResult} ApiParseResult */
+/** @typedef {import('@api-components/amf-helper-mixin').AmfDocument} AmfDocument */
 
 const SOURCE_KEY = 'api.source';
 
@@ -109,6 +111,9 @@ export class PageEditor extends LitElement {
     };
   }
 
+  /**
+   * @returns {string}
+   */
   get source() {
     return this._source;
   }
@@ -124,10 +129,20 @@ export class PageEditor extends LitElement {
 
   constructor() {
     super();
+    this.mediaType = '';
+    this.vendorName = '';
+
     const storedSource = localStorage.getItem(SOURCE_KEY);
     this.source = storedSource || defaultApiValue;
-    // @ts-ignore
-    this.apiBase = window.ApiDemos.apiBase;
+    this.setupVendors();
+    if (window.location.port) {
+      // Dev mode
+      const base = window.location.origin.replace(window.location.port, '8081');
+      const url = new URL('/v1', base);
+      this.apiBase = url.toString();
+    } else {
+      this.apiBase = 'https://api.api-console.io/v1';
+    }
   }
 
   _updateModel() {
@@ -151,21 +166,30 @@ export class PageEditor extends LitElement {
       this.isDirty = true;
       return;
     }
-    const url = `${this.apiBase}/parser/`;
     this.loading = true;
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body: this.source,
+      const headers = /** @type Record<string, string> */ ({
+        'Content-Type': this.mediaType,
+        'x-api-vendor': this.vendorName,
       });
-      const data = await response.json();
-      if (response.status === 200) {
-        this.model = JSON.parse(data.data.api);
-      } else {
-        this.notifyError(data.message);
+      const response = await fetch(`${this.apiBase}/text`, {
+        body: this.source,
+        method: 'POST',
+        headers: headers,
+      });
+      const body = await response.json();
+      if (response.status !== 201) {
+        throw new Error(body.message || 'Unable to communicate with the API parser service.');
       }
+      const { location } = body;
+      if (!location) {
+        throw new Error(`The API parsing service returned unexpected value.`);
+      }
+      const result = await this.readAndProcessParsingResult(location);
+      this.model = /** @type AmfDocument */ (/** @type unknown */(result.model));
     } catch (e) {
       this.notifyError(e.message);
+      console.error(e);
     }
     this.loading = false;
     if (this.isDirty) {
@@ -174,8 +198,86 @@ export class PageEditor extends LitElement {
     }
   }
 
+  /**
+   * Makes a query to the AMF service for the parsing result. When ready it either returns 
+   * the value or pics the API main file.
+   * 
+   * This function is made to be called recursively until one of the expected status codes are returned.
+   * 
+   * @param {string} headerLocation The current URL to query.
+   * @returns {Promise<ApiParseResult|undefined>}
+   */
+  async readAndProcessParsingResult(headerLocation) {
+    const url = this.getApiServiceUrl(headerLocation);
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const model = await response.json();
+      const result = /** @type ApiParseResult */ ({
+        model,
+        type: {
+          type: response.headers.get('x-api-vendor'),
+          contentType: '',
+        },
+      });
+      return result;
+    }
+    if (response.status === 204) {
+      const location = response.headers.get('location');
+      await this.aTimeout(250);
+      return this.readAndProcessParsingResult(location || headerLocation);
+    }
+    if (response.status === 300) {
+      throw new Error(`The API parsing service returned unexpected response ${response.status}`);
+    }
+    const body = await response.json();
+    throw new Error(body.message || 'Unable to communicate with the API parser service.');
+  }
+
+  /**
+   * @param {string=} path
+   * @returns {string} The base URI of the API service.
+   */
+  getApiServiceUrl(path='/') {
+    const url = new URL(path, this.apiBase);
+    return url.toString();
+  }
+
+  /**
+   * @param {number=} timeout
+   * @returns {Promise<void>} 
+   */
+  aTimeout(timeout=0) {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(), timeout);
+    });
+  }
+
+  /**
+   * Adds content type and vendor header to the request headers.
+   */
+  setupVendors() {
+    const { source='' } = this;
+    if (source.includes('#%RAML')) {
+      this.vendorName = 'RAML 1.0';
+      this.mediaType = 'application/raml';
+    } else if (source.includes('asyncapi')) {
+      this.vendorName = 'ASYNC 2.0';
+      this.mediaType = 'application/asyncapi20';
+    } else if (source.includes('openapi:')) {
+      this.vendorName = 'OAS 3.0';
+      this.mediaType = 'application/openapi30';
+    } else if (source.includes('swagger:') || source.includes('"swagger"')) {
+      this.vendorName = 'OAS 2.0';
+      this.mediaType = 'application/oas20';
+    } else {
+      this.vendorName = '';
+      this.mediaType = '';
+    }
+  }
+
   _sourceChanged(e) {
     this.source = e.detail.value;
+    this.setupVendors();
   }
 
   notifyError(message) {

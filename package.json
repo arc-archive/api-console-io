@@ -1,46 +1,40 @@
 {
   "name": "api-console-io",
-  "version": "0.2.9",
+  "version": "0.2.12",
   "description": "API Console official web site",
   "author": "api-console-io",
   "license": "CC BY 2.0",
   "main": "app.js",
+  "type": "module",
   "dependencies": {
+    "@api-components/amf-web-api": "^0.1.3",
     "@google-cloud/debug-agent": "^5.1.3",
     "@google-cloud/logging-winston": "^4.0.4",
     "@google-cloud/trace-agent": "^5.1.3",
-    "amf-client-js": "^4.7.0",
     "compression": "^1.7.4",
-    "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-winston": "^4.1.0",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^10.0.0",
     "nconf": "^0.11.2",
-    "node-cache": "^5.1.2",
-    "safe-json-stringify": "^1.2.0",
     "serve-static": "^1.14.1",
-    "tmp": "^0.2.1",
-    "unzipper": "^0.10.11",
-    "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@open-wc/building-rollup": "^1.9.4",
-    "@open-wc/eslint-config": "^4.2.0",
+    "@open-wc/building-rollup": "^2.0.1",
+    "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/prettier-config": "^1.1.0",
     "@types/compression": "^1.7.0",
     "@types/fs-extra": "^9.0.8",
-    "es-dev-server": "^2.1.0",
-    "eslint": "^7.21.0",
+    "@types/koa__cors": "^3.1.1",
+    "@types/nconf": "^0.10.1",
+    "@web/dev-server": "^0.1.29",
+    "eslint": "^8.9.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.1.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
     "rimraf": "^3.0.2",
     "rollup": "^2.40.0",
-    "rollup-plugin-cpy": "^2.0.1",
-    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^4.2.2",
     "typescript-lit-html-plugin": "^0.9.0",
     "uglify-js": "^3.13.0",
@@ -56,9 +50,9 @@
     "test": "exit 0",
     "start": "node ${SCRIPT:-app.js}",
     "start:api": "node --inspect=9224 api.js --PORT=8081",
-    "start:demo:dev": "cd packages/demo/ && es-dev-server --app-index index.html --node-resolve --open --watch",
-    "start:demo:build": "cd demo-dist && es-dev-server --open",
-    "start:dev": "cd packages/main/ && es-dev-server --app-index index.html --node-resolve --open --watch",
+    "start:demo:dev": "cd packages/demo/ && web-dev-server --app-index index.html --node-resolve --open --watch",
+    "start:demo:build": "cd demo-dist && web-dev-server --open",
+    "start:dev": "cd packages/main/ && web-dev-server --app-index index.html --node-resolve --open --watch",
     "start:docs": "mkdocs serve",
     "build": "npm run build:www && npm run build:demo && npm run build:docs",
     "build:www": "rimraf www-dist && rollup -c packages/main/rollup.config.js",
@@ -93,17 +87,10 @@
     }
   },
   "prettier": "@open-wc/prettier-config",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix"
-    ]
-  },
   "resolutions": {
     "terser": "4.6.7"
+  },
+  "engines": {
+    "node": ">=16.14.0"
   }
 }

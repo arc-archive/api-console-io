@@ -1,0 +1,7 @@
+{
+  "data-type-fragment/data-type-fragment.raml": { "type": "RAML 1.0", "mime": "application/raml" },
+  "demo-api/demo-api.raml": { "type": "RAML 1.0", "mime": "application/raml" },
+  "google-drive-api/google-drive-api.raml": { "type": "RAML 1.0", "mime": "application/raml" },
+  "httpbin/httpbin.json":  { "type": "OAS 2.0", "mime": "application/json" },
+  "async-api/async-api.yaml": "ASYNC 2.0"
+}

@@ -67,6 +67,7 @@ class UploadApiScreen extends LitElement {
         margin: 0 24px;
         line-height: 64px;
       }
+    }
     `;
   }
 
@@ -77,6 +78,9 @@ class UploadApiScreen extends LitElement {
     };
   }
 
+  /**
+   * @returns {HTMLInputElement}
+   */
   get _input() {
     return this.shadowRoot.querySelector('input[type="file"]');
   }

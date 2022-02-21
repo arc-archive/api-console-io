@@ -4,9 +4,9 @@ This project contains sources for API Console website.
 
 It consists of 3 services:
 
--   Application www page
--   Demo page with usage examples
--   Documentation service
+- Application www page
+- Demo page with usage examples
+- Documentation service
 
 All is bundled in a container and hosted on GKE.
 
@@ -20,7 +20,7 @@ npm run build:docs
 
 ## Building and deploying the container
 
-**Bump project version before builing and deploying new version.**
+**Bump project version before building and deploying new version.**
 
 ```bash
 npm run gke:build

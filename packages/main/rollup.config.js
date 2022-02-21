@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createSpaConfig } from '@open-wc/building-rollup';
 import path from 'path';
-import cpy from 'rollup-plugin-cpy';
 import merge from 'deepmerge';
+import cpy from '../../lib/rollup-cpy.js';
 
 const baseConfig = createSpaConfig({
   outputDir: 'www-dist',
@@ -50,27 +50,3 @@ export default merge(baseConfig, {
     }),
   ],
 });
-//
-// config.output.dir = 'www-dist';
-// export default {
-//   ...config,
-//   output: {
-//     ...config.output,
-//     // sourcemap: false,
-//   },
-//   plugins: [
-//     ...config.plugins,
-//     cpy({
-//       files: [
-//         './resources/**/*.*',
-//         './index.css',
-//         './robots.txt',
-//         './humans.txt',
-//       ],
-//       dest: 'www-dist',
-//       options: {
-//         parents: true,
-//       },
-//     }),
-//   ],
-// };

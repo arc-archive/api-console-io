@@ -1,5 +1,8 @@
-import path from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import nconf from 'nconf';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 nconf
   // 1. Command-line arguments
@@ -12,7 +15,7 @@ nconf
     'PORT'
   ])
   // 3. Config file
-  .file({ file: path.join(__dirname, 'config.json') })
+  .file({ file: join(__dirname, 'config.json') })
   // 4. Defaults
   .defaults({
     PORT: 8080
